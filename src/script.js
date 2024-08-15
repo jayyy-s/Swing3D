@@ -214,8 +214,8 @@ camera.position.z = 4;
 scene.add(camera);
 
 // Controls
-const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true;
+//const controls = new OrbitControls(camera, canvas);
+// controls.enableDamping = true;
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -230,9 +230,12 @@ const tick = () => {
 
   // Animations
   swing.rotation.x = Math.sin(2.5 * elapsedTime) * 0.5;
+  camera.position.x = Math.sin(elapsedTime) * 5;
+  camera.position.z = Math.cos(elapsedTime) * 5;
+  camera.lookAt(0, 0, 0);
 
   // Update controls
-  controls.update();
+  // controls.update();
 
   // Render
   renderer.render(scene, camera);
